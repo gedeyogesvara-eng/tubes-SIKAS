@@ -98,6 +98,30 @@ func pembayarankas() {
 	}
 }
 
+func cariDataMahasiswa() {
+	var input string
+
+	fmt.Print("Masukkan NIM atau Nama Mahasiswa: ")
+	fmt.Scanln(&input)
+	idx := -1
+	for i := 0; i < len(datamahasiswa); i++ {
+		if datamahasiswa[i].NIM == input || datamahasiswa[i].Nama == input {
+			idx = i
+		}
+	}
+	
+	if idx != -1 {
+		fmt.Println("\nData ditemukan!")
+		fmt.Println("NIM  :", datamahasiswa[idx].NIM)
+		fmt.Println("Nama :", datamahasiswa[idx].Nama)
+		fmt.Println("Total Bayar : Rp", datamahasiswa[idx].Totalbayar)
+		fmt.Println("Status      :", statuslunas(datamahasiswa[idx].StatusLunas))
+		fmt.Println("Sisa Tunggakan : Rp", kasperorang-datamahasiswa[idx].Totalbayar)
+	} else {
+		fmt.Println("\nData mahasiswa tidak ditemukan!")
+	}
+}
+
 func editData() {
 	if len(datamahasiswa) == 0 {
 		fmt.Println("\n✗ Belum ada Data Mahasiswa!")
@@ -213,24 +237,33 @@ func main() {
 		switch pilih {
 		case 1:
 			fmt.Println("Anda memilih 1 : Tampilkan Daftar Kas & Status")
+			fmt.Println()
 			tampilkandaftarkas()
 		case 2:
 			fmt.Println("Anda memilih 2 : Input Pembayaran Kas")
+			fmt.Println()
 			pembayarankas()
 		case 3:
 			fmt.Println("Anda memilih 3 : Input Pengeluaran Kelas")
+			fmt.Println()
 		case 4:
 			fmt.Println("Anda memilih 4 : Cari Data Mahasiswa")
+			fmt.Println()
+			cariDataMahasiswa()
 		case 5:
 			fmt.Println("Anda memilih 5 : Urutkan Penunggak Kas")
+			fmt.Println()
 		case 6:
 			fmt.Println("Anda memilih 6 : Tambah Data Baru")
+			fmt.Println()
 			TambahMahasiswa()
 		case 7:
 			fmt.Println("Anda memilih 7 : Edit Data")
+			fmt.Println()
 			editData()
 		case 8:
 			fmt.Println("Anda memilih 8 : Menghapus Data")
+			fmt.Println()
 		case 9:
 			fmt.Println("Anda memilih 9 : Keluar")
 			fmt.Println("Terima kasih telah menggunakan aplikasi SIKAS")
