@@ -137,9 +137,12 @@ func caridata() {
 	fmt.Print("Masukkan NIM atau Nama : ")
 	fmt.Scanln(&input)
 	idx := -1
-	for i := 0; i < len(datamahasiswa); i++ {
+	ketemu := false
+
+	for i := 0; i < len(datamahasiswa) && !ketemu; i++ {
 		if datamahasiswa[i].NIM == input || datamahasiswa[i].Nama == input {
 			idx = i
+			ketemu = true
 		}
 	}
 
