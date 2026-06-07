@@ -18,7 +18,7 @@ var datamahasiswa []Mahasiswa
 const kasperorang = 100000
 
 func tampilkandaftarkas() {
-	fmt.Println("Daftar Kas Kelas :")
+	fmt.Println("Daftar Kas :")
 	fmt.Printf("NIM\t\tNama\t\tTotal Bayar\t\tTanggal\t\tStatus\t\tSisa Tunggakan\n")
 	fmt.Println("______________________________________________________________________________________________________")
 	for i := 0; i < len(datamahasiswa); i++ {
@@ -98,6 +98,40 @@ func pembayarankas() {
 	}
 }
 
+func pengeluaranKelas() {
+	var jumlah int
+	var totalPengeluaran int
+	var keterangan string
+
+	fmt.Println("=== Pengeluaran Kelas ===")
+
+	fmt.Print("Masukkan jumlah pengeluaran: ")
+	fmt.Scanln(&jumlah)
+
+	fmt.Print("Masukkan keterangan: ")
+	fmt.Scanln(&keterangan)
+
+	totalKas := 0
+	for i := 0; i < len(datamahasiswa); i++ {
+		totalKas += datamahasiswa[i].Totalbayar
+	}
+
+	saldo := totalKas - totalPengeluaran
+
+	if jumlah > saldo {
+		fmt.Println("Pengeluaran gagal, saldo kas tidak mencukupi")
+		return
+	}
+
+	totalPengeluaran += jumlah
+
+	fmt.Println()
+	fmt.Println("PENGELUARAN BERHASIL")
+	fmt.Println("Jumlah Pengeluaran :", jumlah)
+	fmt.Println("Keterangan         :", keterangan)
+	fmt.Println("Sisa Saldo Kas     :", saldo-jumlah)
+}
+
 func cariDataMahasiswa() {
 	var input string
 
@@ -109,7 +143,7 @@ func cariDataMahasiswa() {
 			idx = i
 		}
 	}
-	
+
 	if idx != -1 {
 		fmt.Println("\nData ditemukan!")
 		fmt.Println("NIM  :", datamahasiswa[idx].NIM)
@@ -119,6 +153,31 @@ func cariDataMahasiswa() {
 		fmt.Println("Sisa Tunggakan : Rp", kasperorang-datamahasiswa[idx].Totalbayar)
 	} else {
 		fmt.Println("\nData mahasiswa tidak ditemukan!")
+	}
+}
+
+func urutkanPenunggakKas() {
+	var temp Mahasiswa
+
+	for i := 0; i < len(datamahasiswa)-1; i++ {
+		for j := 0; j < len(datamahasiswa)-i-1; j++ {
+			if datamahasiswa[j].Totalbayar > datamahasiswa[j+1].Totalbayar {
+				temp = datamahasiswa[j]
+				datamahasiswa[j] = datamahasiswa[j+1]
+				datamahasiswa[j+1] = temp
+			}
+		}
+	}
+
+	fmt.Println("Daftar Mahasiswa (Diurutkan dari pembayaran terkecil)")
+	fmt.Println("_____________________________________________________")
+
+	for i := 0; i < len(datamahasiswa); i++ {
+		fmt.Printf("%d. %s (%s) - Total Bayar: Rp %d\n",
+			i+1,
+			datamahasiswa[i].Nama,
+			datamahasiswa[i].NIM,
+			datamahasiswa[i].Totalbayar)
 	}
 }
 
@@ -246,6 +305,7 @@ func main() {
 		case 3:
 			fmt.Println("Anda memilih 3 : Input Pengeluaran Kelas")
 			fmt.Println()
+			pengeluaranKelas()
 		case 4:
 			fmt.Println("Anda memilih 4 : Cari Data Mahasiswa")
 			fmt.Println()
@@ -253,6 +313,7 @@ func main() {
 		case 5:
 			fmt.Println("Anda memilih 5 : Urutkan Penunggak Kas")
 			fmt.Println()
+			urutkanPenunggakKas()
 		case 6:
 			fmt.Println("Anda memilih 6 : Tambah Data Baru")
 			fmt.Println()
