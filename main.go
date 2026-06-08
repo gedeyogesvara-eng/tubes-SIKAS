@@ -18,20 +18,18 @@ var totalpengeluaran int
 
 const kasperorang = 100000
 
-//dibuat Gede Yogi Yogesvara Dita Diasta (109082500037)
+// dibuat Gede Yogi Yogesvara Dita Diasta (109082500037)
 func tampilkandaftarkas() {
 	var m Mahasiswa
 	var totalsaldo int
 
 	fmt.Println("Daftar Kas : ")
 	fmt.Printf("NIM\t\tNama\t\tTotal Bayar\t\tTanggal\t\tStatus\t\tSisa Tunggakan\n")
-	fmt.Println("______________________________________________________________________________________________________")
 	for i := 0; i < len(datamahasiswa); i++ {
 		m = datamahasiswa[i]
 		totalsaldo = totalsaldo + m.Totalbayar
 		fmt.Printf("%s\t\t%s\t\t%d\t\t\t%s\t%s\t%d\n", m.NIM, m.Nama, m.Totalbayar, m.TanggalBayar, statuslunas(m.StatusLunas), kasperorang-m.Totalbayar)
 	}
-	fmt.Println("______________________________________________________________________________________________________")
 	fmt.Printf("Total Saldo Kas: Rp %d\n", totalsaldo-totalpengeluaran)
 	fmt.Printf("Jumlah Mahasiswa Lunas: %d dari %d Mahasiswa\n", hitunglunas(), len(datamahasiswa))
 }
@@ -55,7 +53,7 @@ func statuslunas(lunas bool) string {
 	}
 }
 
-//dibuat Rizky Iffat Venardi  (2311102301)
+// dibuat Rizky Iffat Venardi  (2311102301)
 func pembayarankas() {
 	var input string
 	fmt.Print("Masukkan NIM atau Nama Mahasiswa: ")
@@ -96,7 +94,7 @@ func pembayarankas() {
 	}
 }
 
-//dibuat Ignatius Steven M. (109082500089)
+// dibuat Ignatius Steven M. (109082500089)
 func pengeluaranKelas() {
 	var jumlah int
 	var keterangan string
@@ -130,7 +128,7 @@ func pengeluaranKelas() {
 	fmt.Println("Sisa Saldo Kas     :", totalKas-totalpengeluaran)
 }
 
-//dibuat Gede Yogi Yogesvara Dita Diasta (109082500037)
+// dibuat Gede Yogi Yogesvara Dita Diasta (109082500037)
 func caridata() {
 	var input string
 
@@ -158,7 +156,7 @@ func caridata() {
 	}
 }
 
-//dibuat Ignatius Steven M. (109082500089)
+// dibuat Ignatius Steven M. (109082500089)
 func urutkanPenunggakKas() {
 	var temp Mahasiswa
 
@@ -184,7 +182,7 @@ func urutkanPenunggakKas() {
 	}
 }
 
-//dibuat Ignatius Steven M. (109082500089)
+// dibuat Ignatius Steven M. (109082500089)
 func TambahMahasiswa() {
 	var nim, nama string
 
@@ -208,7 +206,7 @@ func TambahMahasiswa() {
 	fmt.Println("Data mahasiswa berhasil ditambahkan")
 }
 
-//dibuat Rizky Iffat Venardi  (2311102301)
+// dibuat Rizky Iffat Venardi  (2311102301)
 func editData() {
 	if len(datamahasiswa) == 0 {
 		fmt.Println("\n✗ Belum ada Data Mahasiswa!")
@@ -301,7 +299,7 @@ func editData() {
 	}
 }
 
-//dibuat Rizky Iffat Venardi  (2311102301)
+// dibuat Rizky Iffat Venardi  (2311102301)
 func HapusData() {
 	if len(datamahasiswa) == 0 {
 		fmt.Println("\n✗ Belum ada data Mahasiswa!")
@@ -340,7 +338,7 @@ func HapusData() {
 	}
 }
 
-//dibuat Gede Yogi Yogesvara Dita Diasta (109082500037)
+// dibuat Gede Yogi Yogesvara Dita Diasta (109082500037)
 func main() {
 	var pilih int
 
