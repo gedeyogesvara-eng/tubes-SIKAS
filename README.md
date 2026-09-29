@@ -21,7 +21,7 @@ Aplikasi ini dilengkapi dengan fitur-fitur kas yang interaktif:
 # 🚀 Cara Menjalankan Aplikasi
 Pastikan Anda sudah menginstal Go compiler di komputer Anda sebelum mengikuti langkah-langkah di bawah ini.
 # 1. Clone Repositori
-git clone [https://github.com/username-kamu/sikas-aplikasi-kas.git](https://github.com/username-kamu/sikas-aplikasi-kas.git)
+git clone [https://github.com/username-kamu/sikas-aplikasi-kas.git]([https://github.com/username-kamu/sikas-aplikasi-kas.git](https://github.com/gedeyogesvara-eng/tubes-SIKAS.git))
 cd sikas-aplikasi-kas
 # 2. Jalankan Program (Tanpa Compile)
 Anda bisa langsung mengeksekusi file kode utama:
